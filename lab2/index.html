@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachinder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header wrapper">
+    <div class="top-bar">
+        <h1 class="brand-logo">Teachinder</h1>
+        <div class="search-form-group">
+            <input type="text" placeholder="Name, note or age to search">
+            <button class="action-search-btn">Search</button>
+        </div>
+    </div>
+    <nav class="navigation-bar">
+        <ul class="nav-links">
+            <li><a href="#mentors">Teachers</a></li>
+            <li><a href="#data-viz">Statistics</a></li>
+            <li><a href="#bookmarked">Favorites</a></li>
+            <li><a href="#info">About</a></li>
+        </ul>
+        <button class="btn-secondary" onclick="handleUI('form-overlay')">Add teacher</button>
+    </nav>
+</header>
+
+<main class="wrapper">
+    <section id="mentors" class="expert-showcase">
+        <h2 class="heading-decorated">Top Teachers</h2>
+        <div class="filter-panel">
+            <label>Age <select><option>18-25</option><option>26-35</option><option>36-50</option></select></label>
+            <label>Region <select><option>Europe</option><option>USA</option></select></label>
+            <label>Sex <select><option>Male</option><option>Female</option></select></label>
+            <label><input type="checkbox"> Only with photo</label>
+            <label><input type="checkbox"> Only favorites</label>
+        </div>
+
+        <div class="members-layout">
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://cdn-icons-png.flaticon.com/512/147/147131.png" alt="Ihor Tkachuk">
+                    </div>
+                </div>
+                <h3>Ihor <br>Tkachuk</h3>
+                <p class="subject-label">Chemistry</p>
+                <p class="location-tag">Ukraine</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6858/6858569.png" alt="Pragg Ramesh">
+                    </div>
+                </div>
+                <h3>Pragg <br>Ramesh</h3>
+                <p class="subject-label">Chess</p>
+                <p class="location-tag">India</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://cdn-icons-png.flaticon.com/512/147/147142.png" alt="Floor Jansen">
+                    </div>
+                    <span class="highlight-star">&#9733;</span>
+                </div>
+                <h3>Floor <br>Jansen</h3>
+                <p class="subject-label">Vocal</p>
+                <p class="location-tag">Denmark</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://icon-icons.com/download-file?file=https%3A%2F%2Fimages.icon-icons.com%2F2643%2FPNG%2F512%2Fmale_boy_person_people_avatar_icon_159358.png&id=159358&pack_or_individual=pack" alt="John Burke">
+                    </div>
+                </div>
+                <h3>John <br>Burke</h3>
+                <p class="subject-label">Computer Science</p>
+                <p class="location-tag">Belgium</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXRqoZG_6ccmI8VKwHyBiJj0ki7zVtzJP1qA&s" alt="Ari Tang">
+                    </div>
+                    <span class="highlight-star">&#9733;</span>
+                </div>
+                <h3>Ari <br>Tang</h3>
+                <p class="subject-label">Biology</p>
+                <p class="location-tag">China</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx-rKfA5hRAz7OznF1Z8flH5MjjC-J-3T4EA&s" alt="Rachel Andrew">
+                    </div>
+                </div>
+                <h3>Rachel <br>Andrew</h3>
+                <p class="subject-label">Medicine</p>
+                <p class="location-tag">UK</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame text-avatar">
+                        <span>A.M</span>
+                    </div>
+                </div>
+                <h3>Anna <br>Muzychuk</h3>
+                <p class="subject-label">Chess</p>
+                <p class="location-tag">Belarus</p>
+            </article>
+
+            <article class="profile-item" onclick="handleUI('detail-view')">
+                <div class="photo-holder">
+                    <div class="rounded-frame text-avatar">
+                        <span>R.L</span>
+                    </div>
+                </div>
+                <h3>Radoslaw <br>Ljuboevic</h3>
+                <p class="subject-label">Physics</p>
+                <p class="location-tag">Poland</p>
+            </article>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="data-viz" class="analytics-view">
+        <h2>Statistics</h2>
+        <div class="table-scroll-box">
+            <table class="data-grid-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Speciality</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr><td>Daisy Alexander</td><td>Chemistry</td><td>28</td><td>Female</td><td>Vietnam</td></tr>
+                <tr><td>Julia Bradley</td><td>Math</td><td>26</td><td>Female</td><td>USA</td></tr>
+                <tr><td>Rita Hart</td><td>Art</td><td>41</td><td>Female</td><td>Ireland</td></tr>
+                <tr><td>Jonathan Jacobs</td><td>Math</td><td>32</td><td>Male</td><td>England</td></tr>
+                <tr><td>Nathaniel White</td><td>Computer Science</td><td>37</td><td>Male</td><td>Austria</td></tr>
+                <tr><td>Frank Medina</td><td>English</td><td>43</td><td>Male</td><td>Italy</td></tr>
+                <tr><td>Ella Curtis</td><td>Chess</td><td>34</td><td>Female</td><td>USA</td></tr>
+                <tr><td>Claire Simmmons</td><td>Art</td><td>38</td><td>Female</td><td>Netherlands</td></tr>
+                <tr><td>Benjamin Knight</td><td>Biology</td><td>44</td><td>Male</td><td>Scotland</td></tr>
+                <tr><td>Norma Rose</td><td>Statistics</td><td>36</td><td>Female</td><td>France</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-navigation">
+            <a href="#" class="current">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <span>...</span>
+            <a href="#">Last</a>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <section id="bookmarked" class="collection-slider">
+        <h2>Favorites</h2>
+        <div class="carousel-wrapper">
+            <button class="nav-trigger prev-item">&#10094;</button>
+
+            <div class="profile-track">
+                <article class="profile-item mini" onclick="handleUI('detail-view')">
+                    <div class="photo-holder">
+                        <div class="rounded-frame">
+                            <img src="https://cdn-icons-png.flaticon.com/512/147/147131.png" alt="Ihor Tkachuk">
+                        </div>
+                    </div>
+                    <h3>Ihor<br>Tkachuk</h3>
+                    <p class="location-tag">Ukraine</p>
+                </article>
+
+                <article class="profile-item mini" onclick="handleUI('detail-view')">
+                    <div class="photo-holder">
+                        <div class="rounded-frame text-avatar">
+                            <span>A.M</span>
+                        </div>
+                    </div>
+                    <h3>Anna<br>Makarevich</h3>
+                    <p class="location-tag">Belarus</p>
+                </article>
+
+                <article class="profile-item mini" onclick="handleUI('detail-view')">
+                    <div class="photo-holder">
+                        <div class="rounded-frame">
+                            <img src="https://icon-icons.com/download-file?file=https%3A%2F%2Fimages.icon-icons.com%2F2643%2FPNG%2F512%2Fmale_boy_person_people_avatar_icon_159358.png&id=159358&pack_or_individual=pack" alt="John Burke">
+                        </div>
+                    </div>
+                    <h3>John<br>Burke</h3>
+                    <p class="location-tag">Belgium</p>
+                </article>
+
+                <article class="profile-item mini" onclick="handleUI('detail-view')">
+                    <div class="photo-holder">
+                        <div class="rounded-frame">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXRqoZG_6ccmI8VKwHyBiJj0ki7zVtzJP1qA&s" alt="Ari Tang">
+                        </div>
+                    </div>
+                    <h3>Ari<br>Tang</h3>
+                    <p class="location-tag">China</p>
+                </article>
+
+                <article class="profile-item mini" onclick="handleUI('detail-view')">
+                    <div class="photo-holder">
+                        <div class="rounded-frame">
+                            <img src="https://cdn-icons-png.flaticon.com/512/147/147142.png" alt="Floor Jansen">
+                        </div>
+                    </div>
+                    <h3>Floor<br>Jansen</h3>
+                    <p class="location-tag">Denmark</p>
+                </article>
+            </div>
+
+            <button class="nav-trigger next-item">&#10095;</button>
+        </div>
+    </section>
+</main>
+
+<footer id="info" class="site-footer wrapper">
+    <hr class="section-divider">
+    <div class="footer-layout">
+        <div class="brief-info">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque facere, hic impedit itaque molestiae sit tempore? Ea in mollitia natus rerum voluptates. Ea ex excepturi facere tempora. Aliquid asperiores hic impedit iusto natus quaerat ratione sit? Culpa iusto optio voluptas voluptate. Enim eveniet fugit iure maiores molestiae, praesentium quia.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eligendi illum in inventore ipsum odio officiis omnis quisquam sed tempora?</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque esse expedita id iusto mollitia, odit sint ullam veritatis vero?</p>
+        </div>
+        <nav class="navigation-bar">
+            <ul class="nav-links">
+                <li><a href="#mentors">Teachers</a></li>
+                <li><a href="#data-viz">Statistics</a></li>
+                <li><a href="#bookmarked">Favorites</a></li>
+                <li><a href="#info">About</a></li>
+            </ul>
+            <button class="btn-secondary" onclick="handleUI('form-overlay')">Add teacher</button>
+        </nav>
+    </div>
+</footer>
+
+<div id="form-overlay" class="modal-backdrop">
+    <section class="dialog-window">
+        <header>
+            <h3>Add Teacher</h3>
+            <button class="dismiss" onclick="handleUI('form-overlay')">&times;</button>
+        </header>
+
+        <form action="#" method="post" class="creation-form">
+            <fieldset class="form-body">
+                <div class="form-field-row">
+                    <label>Name
+                        <input type="text" name="full-name" placeholder="Enter name" required>
+                    </label>
+                </div>
+
+                <div class="form-field-row">
+                    <label>Speciality
+                        <select name="speciality">
+                            <option>Mathematics</option>
+                            <option>Physics</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-field-row dual">
+                    <label>Country
+                        <select name="country">
+                            <option>Ukraine</option>
+                        </select>
+                    </label>
+                    <label>City
+                        <input type="text" name="city">
+                    </label>
+                </div>
+
+                <div class="form-field-row dual">
+                    <label>Email
+                        <input type="email" name="email">
+                    </label>
+                    <label>Phone
+                        <input type="tel" name="phone">
+                    </label>
+                </div>
+
+                <div class="form-field-row">
+                    <label>Date of birth
+                        <input type="date" name="dob">
+                    </label>
+                </div>
+
+                <div class="form-field-row sex-selection">
+                    <span>Sex</span>
+                    <label><input type="radio" name="gender" value="male" checked> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                </div>
+
+                <div class="form-field-row">
+                    <label>Background color
+                        <input type="color" name="bg-color" value="#eb4d4d">
+                    </label>
+                </div>
+
+                <div class="form-field-row">
+                    <label>Notes (optional)
+                        <textarea name="comment" rows="3"></textarea>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-action">Add</button>
+            </fieldset>
+        </form>
+    </section>
+</div>
+
+<div id="detail-view" class="modal-backdrop">
+    <div class="dialog-window wide">
+        <header>
+            <h3>Teacher Info</h3>
+            <span class="dismiss" onclick="handleUI('detail-view')">&times;</span>
+        </header>
+
+        <div class="main-profile-box">
+            <div class="image-column">
+                <img src="https://cdn-icons-png.flaticon.com/512/147/147131.png" alt="Ihor Tkachuk" class="hero-photo">
+            </div>
+
+            <div class="data-column">
+                <div class="title-row">
+                    <h2>Ihor Tkachuk</h2>
+                    <span class="star-btn">&#9734;</span>
+                </div>
+
+                <div class="attribute-list">
+                    <p class="expert-label">Chemistry</p>
+                    <p>Kyiv, Ukraine</p>
+                    <p>35, Male</p>
+                    <a href="mailto:ihor_tkachuk@domain.com" class="mail-link">ihor_tkachuk@domain.com</a>
+                    <p class="phone-number">+380964993252</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detailed-bio">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ab autem consectetur culpa cumque, distinctio dolor dolore dolorem doloremque ea explicabo facilis nam nesciunt nisi pariatur perspiciatls...</p>
+            <a href="#" class="map-link">toggle map</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function handleUI(nodeId) {
+        const element = document.getElementById(nodeId);
+        if (element) {
+            const active = element.style.display === 'flex';
+            element.style.display = active ? 'none' : 'flex';
+            document.body.style.overflow = active ? 'auto' : 'hidden';
+        }
+    }
+</script>
+
+</body>
+</html>
