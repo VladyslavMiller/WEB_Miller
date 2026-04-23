@@ -141,15 +141,17 @@ hr {
     cursor: pointer;
 
     .avatar {
-      position: relative; // Це залишаємо для позиціонування зірки
+      position: relative;
       width: 150px;
       height: 150px;
       margin: 0 auto 15px;
 
-      // Створюємо окремий контейнер для картинки, щоб overflow: hidden не заважав зірці
-      img, &.text {
+      img {
         width: 100%;
         height: 100%;
+      }
+
+      img, &.text {
         object-fit: cover;
         border: 4px solid $primary-red;
         border-radius: 50%;
@@ -168,11 +170,11 @@ hr {
 
       .star {
         position: absolute;
-        top: 0;      // Зміщуємо трохи всередину
-        right: 10px; // Щоб вона була в межах видимості, але зверху
+        top: 0;
+        right: 10px;
         font-size: 1.5rem;
         color: #ffc107;
-        z-index: 10; // Піднімаємо над усім
+        z-index: 10;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       }
     }
