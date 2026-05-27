@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachinder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+</head>
+<body>
+
+<header class="header-block layout">
+    <div class="header-row">
+        <h1 class="logo-text">Teachinder</h1>
+        <div class="search-box">
+            <input type="text" id="main-search" placeholder="Name, note or age to search">
+            <button class="btn-search" id="search-go">Search</button>
+        </div>
+    </div>
+    <div class="menu-row">
+        <ul class="menu-items">
+            <li><a href="#teachers">Teachers</a></li>
+            <li><a href="#stats">Statistics</a></li>
+            <li><a href="#favorites">Favorites</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <button class="btn-add" onclick="toggleModal('formModal')">Add teacher</button>
+    </div>
+</header>
+
+<main class="layout">
+    <section id="teachers" class="teachers-section">
+        <h2 class="section-title">Top Teachers</h2>
+        <div class="filters">
+            <label>Age <select id="f-age"><option value="all">All</option><option value="18-25">18-25</option><option value="26-35">26-35</option><option value="36-50">36-50</option></select></label>
+            <label>Region <select id="f-region"><option value="all">All</option></select></label>
+            <label>Sex <select id="f-sex"><option value="all">All</option><option value="male">Male</option><option value="female">Female</option></select></label>
+            <label><input type="checkbox" id="f-photo"> Only with photo</label>
+            <label><input type="checkbox" id="f-fav"> Only favorites</label>
+        </div>
+
+        <div class="cards" id="teacher-cards-container"></div>
+
+        <div id="pagination-cards" class="pagination"></div>
+    </section>
+
+    <hr>
+
+    <section id="stats">
+        <h2 class="section-title">Statistics</h2>
+        <div style="max-width: 450px; margin: 0 auto;">
+            <canvas id="statsChart"></canvas>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="favorites" class="favorites-section">
+        <h2 class="section-title">Favorites</h2>
+        <div class="slider">
+            <button class="arrow prev" onclick="slideFav('left')">&#10094;</button>
+            <div class="slider-viewport">
+                <div class="slider-track" id="fav-track"></div>
+            </div>
+            <button class="arrow next" onclick="slideFav('right')">&#10095;</button>
+        </div>
+    </section>
+</main>
+
+<footer id="about" class="footer layout">
+    <hr>
+    <div class="footer-content">
+        <div class="text-block">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        </div>
+        <div class="menu-row">
+            <ul class="menu-items">
+                <li><a href="#teachers">Teachers</a></li>
+                <li><a href="#stats">Statistics</a></li>
+                <li><a href="#favorites">Favorites</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <button class="btn-add" onclick="toggleModal('formModal')">Add teacher</button>
+        </div>
+    </div>
+</footer>
+
+<div id="formModal" class="modal">
+    <div class="modal-box large">
+        <div class="modal-header">
+            <h3>Add Teacher</h3>
+            <button class="close-btn" onclick="toggleModal('formModal')">&times;</button>
+        </div>
+        <form class="form-container">
+            <div class="form-row">
+                <label>Name
+                    <input type="text" name="name" placeholder="Enter name" required>
+                </label>
+            </div>
+            <div class="form-row">
+                <label>Speciality
+                    <select name="speciality">
+                        <option>Mathematics</option>
+                        <option>Physics</option>
+                        <option>Chemistry</option>
+                        <option>Chess</option>
+                        <option>Biology</option>
+                    </select>
+                </label>
+            </div>
+            <div class="form-row two-cols">
+                <label>Country
+                    <select name="country">
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="USA">USA</option>
+                    </select>
+                </label>
+                <label>City
+                    <input type="text" name="city">
+                </label>
+            </div>
+            <div class="form-row two-cols">
+                <label>Email
+                    <input type="email" name="email">
+                </label>
+                <label>Phone
+                    <input type="tel" name="phone">
+                </label>
+            </div>
+            <div class="form-row">
+                <label>Date of birth
+                    <input type="date" name="dob">
+                </label>
+            </div>
+            <div class="form-row gender">
+                <span>Sex</span>
+                <label><input type="radio" name="gender" value="male" checked> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+            <div class="form-row">
+                <label>Background color
+                    <input type="color" name="color" value="#e34a4a">
+                </label>
+            </div>
+            <div class="form-row">
+                <label>Notes (optional)
+                    <textarea name="notes" rows="3"></textarea>
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">Add</button>
+        </form>
+    </div>
+</div>
+
+<div id="infoModal" class="modal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Teacher Info</h3>
+            <button onclick="toggleModal('infoModal')">×</button>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
